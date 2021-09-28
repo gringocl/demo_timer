@@ -32,3 +32,5 @@ demo_timer-*.tar
 npm-debug.log
 /assets/node_modules/
 
+/.log/
+/priv/
