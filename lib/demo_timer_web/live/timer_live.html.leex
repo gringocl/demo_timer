@@ -1,0 +1,46 @@
+<div
+  class="md:p-24"
+  data-testid="timer-container"
+>
+  <%= if @timer_created? do %>
+    <div class="md:hidden bg-silver h-1 overflow-hidden flex flex-row-reverse"
+         data-testid="mobile-timer-bar">
+      <div
+        class="bg-bubblegum flex mobile-timer-transition flex-col"
+        style="width: <%= @width %>"
+      >
+      </div>
+    </div>
+    <span
+      id="mobile-text"
+      class="absolute right-4 py-3 font-mono text-sm text-bubblegum md:hidden">
+      <%= @formatted_time %>
+    </span>
+    <div class="hidden transition md:block md:<%= if @hidden, do: "invisible", else: "visible" %> relative w-34 h-34">
+      <svg class="base-timer-svg" viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" data-testid="desktop-timer-svg">
+        <g class="base-timer-circle">
+          <circle class="base-timer-path-elapsed" cx="68" cy="68" r="<%= @circle_radius %>" />
+          <path
+            stroke-dasharray="<%= @full_dash_array %>"
+            id="base-timer-path-remaining"
+            class="base-timer-path-remaining stroke-current text-bubblegum"
+            style="stroke-dasharray: <%= @stroke_dash_array %> <%= @full_dash_array %>"
+            d="
+                              M 68, 68
+                              m -60, 0
+                              a 60,60 0 1,0 120,0
+                              a 60,60 0 1,0 -120,0
+                              "
+          />
+        </g>
+      </svg>
+      <span
+        id="base-timer-label"
+        class="base-timer-label text-night">
+        <%= @formatted_time %>
+      </span>
+    </div>
+  <% else %>
+    <div class="hidden md:block relative w-34 h-34"></div>
+  <% end %>
+</div>
