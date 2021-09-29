@@ -1,89 +1,91 @@
-/* This file is for your main application CSS */
-@import "./phoenix.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-/* Alerts and form errors used by phx.new */
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-.alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-}
-.alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
-}
-.alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
-.alert p {
-  margin-bottom: 0;
-}
-.alert:empty {
-  display: none;
-}
-.invalid-feedback {
-  color: #a94442;
-  display: block;
-  margin: -1rem 0 2rem;
+.base-timer-circle {
+  fill: none;
+  stroke: none;
 }
 
-/* LiveView specific classes for your customization */
-.phx-no-feedback.invalid-feedback,
-.phx-no-feedback .invalid-feedback {
-  display: none;
+.base-timer-path-elapsed {
+  stroke-width: 16px;
+
+  @apply stroke-current text-smoke;
 }
 
-.phx-click-loading {
-  opacity: 0.5;
-  transition: opacity 1s ease-out;
+.base-timer-path-remaining {
+  fill-rule: nonzero;
+  stroke: currentColor;
+  stroke-linecap: butt;
+  stroke-width: 16px;
+  transform: rotate(-90deg) scaleX(-1);
+  transform-origin: center;
+  transition: 1s linear all;
 }
 
-.phx-disconnected{
-  cursor: wait;
-}
-.phx-disconnected *{
-  pointer-events: none;
+.mobile-timer-transition {
+  transition: 1s linear all;
 }
 
-.phx-modal {
-  opacity: 1!important;
-  position: fixed;
-  z-index: 1;
-  left: 0;
+.base-timer-label {
+  @apply w-full font-mono text-[3rem];
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
   top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  transition: 1s linear all;
 }
 
-.phx-modal-content {
-  background-color: #fefefe;
-  margin: 15vh auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
-.phx-modal-close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-.phx-modal-close:hover,
-.phx-modal-close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.fade-out {
+  animation-duration: 1s;
+  animation-name: fade-out;
+  animation-timing-function: ease-out;
+}
+
+.fade-in {
+  animation-duration: 1s;
+  animation-name: fade-in;
+  animation-timing-function: ease-in;
+}
+
+.form-submit {
+  @apply bg-magenta text-white font-sans mt-6 py-2 px-4 rounded;
+
+  &:focus {
+    @apply outline-none ring;
+  }
+
+  &:hover {
+    @apply bg-pink;
+  }
+}
+
+.form-label {
+  @apply font-medium font-sans block text-night ml-1 mb-2;
+}
+
+.form-textarea {
+  @apply placeholder-darkGray bg-smoke text-night overflow-x-hidden;
+  @apply w-full bg-smoke border border-lightCharcoal p-3 tracking-wide text-md;
 }

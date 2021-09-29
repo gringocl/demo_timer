@@ -1,23 +1,7 @@
-<div
-  class="md:p-24"
-  data-testid="timer-container"
->
+<div class="p-24" >
   <%= if @timer_created? do %>
-    <div class="md:hidden bg-silver h-1 overflow-hidden flex flex-row-reverse"
-         data-testid="mobile-timer-bar">
-      <div
-        class="bg-bubblegum flex mobile-timer-transition flex-col"
-        style="width: <%= @width %>"
-      >
-      </div>
-    </div>
-    <span
-      id="mobile-text"
-      class="absolute right-4 py-3 font-mono text-sm text-bubblegum md:hidden">
-      <%= @formatted_time %>
-    </span>
-    <div class="hidden transition md:block md:<%= if @hidden, do: "invisible", else: "visible" %> relative w-34 h-34">
-      <svg class="base-timer-svg" viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" data-testid="desktop-timer-svg">
+    <div class="mx-auto transition block relative w-full ">
+      <svg viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" data-testid="desktop-timer-svg">
         <g class="base-timer-circle">
           <circle class="base-timer-path-elapsed" cx="68" cy="68" r="<%= @circle_radius %>" />
           <path
@@ -33,14 +17,10 @@
                               "
           />
         </g>
+        <text x="46" y="75" class="text-black text-[1.75rem]"><%= @formatted_time %></text>
       </svg>
-      <span
-        id="base-timer-label"
-        class="base-timer-label text-night">
-        <%= @formatted_time %>
-      </span>
     </div>
   <% else %>
-    <div class="hidden md:block relative w-34 h-34"></div>
+    <div class="m-auto w-full block relative text-[3rem] text-center font-sans">Waiting for timer to be created!</div>
   <% end %>
 </div>

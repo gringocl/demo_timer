@@ -1,0 +1,14 @@
+    <div class="mx-auto max-w-xl">
+      <%= if is_nil(@topic) do %>
+        <form class="mt-4" phx-submit="create_timer">
+          <label class="form-label">Timer Duration in minutes</label>
+          <input class="form-textarea" type="text" name="duration" value="<%= @default_time %>" placeholder="120">
+          <button class="form-submit" type="submit">Create Timer</button>
+        </form>
+      <% end %>
+      <div>
+        <button class="form-submit" phx-click="start_timer" >Start Timer</button>
+        <button class="form-submit" phx-click="pause_timer" >Pause Timer</button>
+        <button class="form-submit" phx-click="reset_timer" >Reset Timer</button>
+      </div>
+    </div>
