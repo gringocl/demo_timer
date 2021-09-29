@@ -9,6 +9,6 @@
   },
   "scripts": {
     "deploy": "cd .. && mix assets.deploy && rm -f _build/esbuild",
-    "deploy:styles": "NODE_ENV=production postcss css/app.css -o ../priv/static/assets/app.css"
+    "deploy:styles": "NODE_ENV=production tailwind -i css/app.css -o ../priv/static/assets/app.css --minify"
   }
 }
