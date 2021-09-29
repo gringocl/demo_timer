@@ -45,7 +45,8 @@ defmodule DemoTimer.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:vt_gen_timer, "~> 0.1.0"}
     ]
   end
 
@@ -58,7 +59,11 @@ defmodule DemoTimer.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": [
+        "cmd --cd assets npm run deploy:styles",
+        "esbuild default --minify",
+        "phx.digest"
+      ]
     ]
   end
 end

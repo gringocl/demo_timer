@@ -1,5 +1,6 @@
 defmodule DemoTimerWeb.Router do
   use DemoTimerWeb, :router
+  import Plug.BasicAuth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,11 +15,21 @@ defmodule DemoTimerWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :http_auth do
+    plug(:basic_auth, username: "admin", password: "asdfasdf")
+  end
+
   scope "/", DemoTimerWeb do
     pipe_through :browser
 
     get "/", PageController, :index
     live "/timer", TimerLive
+  end
+
+  scope "/", DemoTimerWeb do
+    pipe_through [:browser, :http_auth]
+
+    live "/timer/admin", AdminPanelLive
   end
 
   # Other scopes may use custom stacks.
