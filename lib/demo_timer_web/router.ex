@@ -22,14 +22,13 @@ defmodule DemoTimerWeb.Router do
   scope "/", DemoTimerWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
-    live "/timer", TimerLive
+    live "/", TimerLive
   end
 
   scope "/", DemoTimerWeb do
     pipe_through [:browser, :http_auth]
 
-    live "/timer/admin", AdminPanelLive
+    live "/admin", AdminPanelLive
   end
 
   # Other scopes may use custom stacks.
