@@ -1,6 +1,6 @@
-<div class="p-24" >
+<div class="p-16" >
   <%= if @timer_created? do %>
-    <div class="mx-auto transition block relative w-full ">
+    <div class="mx-auto transition block relative w-[20rem] h-[20rem]">
       <svg viewBox="0 0 136 136" xmlns="http://www.w3.org/2000/svg" data-testid="desktop-timer-svg">
         <g class="base-timer-circle">
           <circle class="base-timer-path-elapsed" cx="68" cy="68" r="<%= @circle_radius %>" />
@@ -17,10 +17,10 @@
                               "
           />
         </g>
-        <text x="30" y="75" class="text-black text-[1.75rem]"><%= @formatted_time %></text>
+        <text x="50" y="75" class="text-black text-[1rem]"><%= @formatted_time %></text>
       </svg>
     </div>
   <% else %>
-    <div class="m-auto w-full block relative text-[3rem] text-center font-sans">Waiting for timer to be created!</div>
+    <div class="m-auto w-full block relative text-[1rem] text-center font-sans">Waiting for timer to be created!</div>
   <% end %>
 </div>

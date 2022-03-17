@@ -28,7 +28,7 @@
 }
 
 .base-timer-label {
-  @apply w-full font-mono text-[3rem];
+  @apply w-full font-mono text-[1rem];
   align-items: center;
   display: flex;
   justify-content: center;
